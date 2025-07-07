@@ -412,18 +412,18 @@ public class Sodoku extends PApplet{
         
             
         
-            long start = System.nanoTime();
+            // long start = System.nanoTime();
 
-            solvePuzzleFileConcurrent("puzzles/easy.txt", "solutions/easy.txt");
+            // solvePuzzleFileConcurrent("puzzles/easy.txt", "solutions/easy.txt");
 
-            long end = System.nanoTime();
+            // long end = System.nanoTime();
 
-            System.out.println((end - start)/1_000_000_000);
+            // System.out.println((end - start)/1_000_000_000);
      
 
-		// String[] processingArgs = {"Sodoku Solver"};
-		// Sodoku mySketch = new Sodoku();
-		// PApplet.runSketch(processingArgs, mySketch);
+		String[] processingArgs = {"Sodoku Solver"};
+		Sodoku mySketch = new Sodoku();
+		PApplet.runSketch(processingArgs, mySketch);
 	
     }
 }
