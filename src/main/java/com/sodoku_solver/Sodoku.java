@@ -414,7 +414,7 @@ public class Sodoku extends PApplet{
         
             long start = System.nanoTime();
 
-            solvePuzzleFileConcurrent("puzzles/test.txt", "solutions/test.txt");
+            solvePuzzleFileConcurrent("puzzles/easy.txt", "solutions/easy.txt");
 
             long end = System.nanoTime();
 
