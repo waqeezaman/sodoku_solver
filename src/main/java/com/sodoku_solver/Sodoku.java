@@ -34,8 +34,8 @@ public class Sodoku extends PApplet{
     int[][] grid;
     int [][] solvedGrid; 
 
-    String puzzlesFile = "puzzles/hard.txt";
-    int puzzleNum = 1;
+    String puzzlesFile = "puzzles/diabolical.txt";
+    int puzzleNum = 0;
 
     // float knownProbability = 0.0f;
 
@@ -61,15 +61,11 @@ public class Sodoku extends PApplet{
         textSize(100);
         textAlign(CENTER, CENTER);
 
-
-        
-
         constraintHandler = new ConstraintHandler(grid);
         solvedGrid = constraintHandler.getSolvedGrid();
 
         if (solvedGrid == null) System.out.println("Solution Not Found ");
             
-    
     }
     
     public void draw(){
@@ -77,8 +73,6 @@ public class Sodoku extends PApplet{
         background(225);
         drawGrid();
     }
-
-
 
     private void drawGrid(){
 
@@ -141,8 +135,6 @@ public class Sodoku extends PApplet{
             line(j*cellWidth, 0,  j*cellWidth, height);            
         }
     }
-
-
 
 
     static String loadPuzzle(String filePath, int puzzleNum){
@@ -363,19 +355,14 @@ public class Sodoku extends PApplet{
             for (String puzzleString : puzzles) {
 
                 String[] puzzleParts = puzzleString.split(" ");
-
                 String puzzleHash = puzzleParts[0]; 
                 String puzzle = puzzleParts[1];
                 
                 tasks.add(new solveSodokuThread(puzzle, puzzleHash));
-
             }
-
 
             List<Future<String>> results = executor.invokeAll(tasks);
             executor.shutdown();
-
-            
             
             FileWriter fileWriter = new FileWriter(solutionFile);
             
@@ -383,12 +370,7 @@ public class Sodoku extends PApplet{
                 fileWriter.write(future.get()+ "\n");
             }
             
-            fileWriter.close();
-           
-            
-            
-
-       
+            fileWriter.close();       
         } catch (IOException e) {
             System.out.println("File Unable to be Opened");
         }
@@ -399,31 +381,22 @@ public class Sodoku extends PApplet{
         }
         catch(ExecutionException e){
             System.out.println("Execution Exception");
-
         }
 
     }
 
-
-
-
     public static void main(String[] args){
 
-        
-            
-        
             // long start = System.nanoTime();
 
-            // solvePuzzleFileConcurrent("puzzles/easy.txt", "solutions/easy.txt");
+            // solvePuzzleFileConcurrent("puzzles/easy.txt", "solutions/time_easy.txt");
 
             // long end = System.nanoTime();
 
-            // System.out.println((end - start)/1_000_000_000);
-     
+            // System.out.println((end - start)/1_000_000_000);     
 
 		String[] processingArgs = {"Sodoku Solver"};
 		Sodoku mySketch = new Sodoku();
 		PApplet.runSketch(processingArgs, mySketch);
-	
     }
 }

@@ -4,22 +4,14 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-
 import com.cdcl.Formula;
 import com.cdcl.Solver;
 
-
-
 public class ConstraintHandler {
-
     int[][] currentGrid;
-
     Formula formula; 
-
     int problemSize= 3;
     
-
-
     public ConstraintHandler(int[][] grid){
 
         
@@ -70,8 +62,6 @@ public class ConstraintHandler {
 
         return solvedGrid;
     }
-
-
 
     int getNumPropositionalVariables(){
 
@@ -136,7 +126,6 @@ public class ConstraintHandler {
 
     }
 
-    
     List<HashSet<Integer>> createSingleNumberInCellConstraints(){
 
 
@@ -191,9 +180,6 @@ public class ConstraintHandler {
         return constraints;
     }
     
-
-
-
     List<HashSet<Integer>> createRowConstraints(){
         
         ArrayList<HashSet<Integer>> constraints = new ArrayList<>();
@@ -242,10 +228,6 @@ public class ConstraintHandler {
 
         return constraints;
     }
-
-
-  
-
 
     List<HashSet<Integer>> createColumnConstraints(){
 
@@ -301,8 +283,6 @@ public class ConstraintHandler {
         return constraints;
     }
 
-
-
     List<HashSet<Integer>> createBoxConstraint(int box_i, int box_j, int number){
 
 
@@ -356,8 +336,6 @@ public class ConstraintHandler {
 
     }
 
-
-
     List<HashSet<Integer>> createBoxConstraints(){
 
         List<HashSet<Integer>> constraints = new ArrayList<>();
@@ -378,11 +356,4 @@ public class ConstraintHandler {
 
         return constraints;
     }
-
-
-
-
-
-
 }
-
